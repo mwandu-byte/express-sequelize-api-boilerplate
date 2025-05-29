@@ -1,30 +1,31 @@
 
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.bulkInsert(
-    'Users',
-    [
+  up: async (queryInterface) => {
+    await queryInterface.bulkInsert('Users', [
       {
-        firstName: 'Admin',
-        lastName: 'User',
-        email: 'admin@gmail.com',
-        password: 'e10adc3949ba59abbe56e057f20f883e',
+        firstName: 'mwandu',
+        lastName: 'meshack',
+        email: 'mwandu@gmail.com',
+        password: '123456', // 👉 You should hash this if used in real app
         isAdmin: true,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        firstName: 'User',
-        lastName: 'User',
-        email: 'user@gmail.com',
-        password: 'e10adc3949ba59abbe56e057f20f883e',
+        firstName: 'neema',
+        lastName: 'mwandu',
+        email: 'neema@gmail.com',
+        password: '123456',
         isAdmin: false,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-    ],
-    {},
-  ),
+    ], {});
+  },
 
-  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Users', null, {}),
+  down: async (queryInterface) => {
+    await queryInterface.bulkDelete('Users', null, {});
+  },
 };
+
